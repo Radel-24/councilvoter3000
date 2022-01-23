@@ -1,4 +1,4 @@
-![42 Council Voter 3000](logo.png)
+![42 Council Voter 3000](./docker_django/logo.png)
 
 ## This Docker container is build to run on a server an provide an easy to use interface for every student to vote for their councilors.
 
