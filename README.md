@@ -13,4 +13,4 @@ make all
 
 ## The Team
 [42 Heilbronn](https://www.42heilbronn.de/en/) students:
-[Jeremie](https://github.com/JeremieSiller), [Alex](https://github.com/42akurz), [Kevin](https://github.com/khirsig), [Robin](https://github.com/Radel-24), 
+[Alex](https://github.com/42akurz), [Jeremie](https://github.com/JeremieSiller), [Kevin](https://github.com/khirsig), [Robin](https://github.com/Radel-24), 
