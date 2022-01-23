@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Election</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="displaying all the candidates of the poll">
+        <meta name="author" content="Robin Adelwarth">
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: sans-serif;
+            }
+            body {
+                display: flex;
+                height: 100vh;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                /* background: linear-gradient(200deg, rgba(5, 183, 183), #fff); */
+                background: rgba(5, 183, 183);
+            }
+            .container {
+                max-width: 800px;
+                width:  100%;
+                background: white;
+                padding: 25px 30px;
+                border-radius: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                /* align-items: center; */
+                justify-content: space-between;
+                border: 2px solid white;
+            }
+            .container .title {
+                content: url("https://raw.githubusercontent.com/khirsig/42councilVoter3000/master/logo.png?token=GHSAT0AAAAAABQOBIPZE73DW3SFMM3AIZ2CYPRQUDA");
+                border-radius: 5px;
+                position: relative;
+                margin-bottom: 20px;
+                order: -1;
+                flex: 1 0 100%;
+            }
+            .container .info {
+                width: calc(100% / 2 - 20px);
+            }
+            .container .interaction {
+                width: calc(100% / 2 - 20px);
+            }
+            .container form .votes {
+                margin: 0 0 12px 0;
+            }
+            .container form .input-box {
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                margin-bottom: 15px;
+                width: 100%
+            }
+            .container form .input-box .details {
+                font-weight: bold;
+                padding-bottom: 1px;
+                text-align: center;
+                height: 30px;
+                background-color: black;
+                color: white;
+                border-radius: 5px 5px 0 0;
+                padding-top: 7px;
+            }
+            .container form .input-box input {
+                height: 45px;
+                width: 100%;
+                outline: none;
+                border-radius: 0 0 5px 5px;
+                border: 1px solid #ccc;
+                padding-left: 15px;
+                font-size: 16px;
+            }
+            .container form .input-box input:focus {
+                border: 2px solid black;
+            }
+            .btn input {
+                background-color: rgba(5, 183, 183);
+                padding: 10px;
+                width: 100%;
+                color: white;
+                height: 45px;
+                outline: none;
+                border-radius: 5px;
+                border: 1px solid rgba(5, 183, 183);
+                font-size: 16px;
+                /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
+                box-shadow: 0 4px #ccc;
+            }
+            .btn input:active {
+              background-color: rgba(5, 200, 200);
+              box-shadow: 0 1px #f3f3f3;
+              transform: translateY(4px);
+            }
+            .btn input:hover {
+                background: rgba(5, 200, 200);
+                border: none;
+                /* border: 5px solid white; */
+                /* color: black;  */
+                cursor: pointer;
+            }
+            .candidate-list {
+                border-collapse: collapse;
+                border-radius: 5px;
+                overflow: hidden;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                font-weight: 500;
+                width: 100%;
+            }
+            /* tablehead desing */
+            .candidate-list thead tr {
+                background-color: black;
+                color: white;
+                text-align: left;
+                font-weight: bold;
+            }
+            /* size of rows in table */
+            .candidate-list th,
+            .candidate-list td {
+                padding: 12px 15px;
+                text-align: left;
+            }
+            /* add lines in table */
+            .candidate-list tbody tr {
+                border-bottom: 1px solid #ccc;
+                background-color: white;
+                height: 45px;
+                width: 100%;
+                font-size: 16px;
+            }
+            /* make every second row a different background  */
+            .candidate-list tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+            /* make last border thicker and colored */
+            .candidate-list tbody tr:last-of-type {
+                border-bottom: 3px solid black;
+            }
+
+            .container .error {
+                margin-bottom: 10px;
+                /* order: -1; */
+                flex: 1 0 100%;
+                color: #D8000C;
+                background-color: #FFD2D2;
+                padding: 12px 15px;
+                border-radius: 5px;
+            }
+
+            datalist {
+                border: 1px solid black;
+                background: white;
+            }
+
+            @media only screen and (max-width: 600px)
+            {
+                .container {
+                    max-width: 400px;
+                    display: block;
+                }
+                .container .info {
+                    width: 100%;
+                }
+                .container .interaction {
+                    padding-top: 20px;
+                    width: 100%;
+                }
+            }
+            </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="title">42 Council Voter</div>
+            {% if invalid != "" %}
+                <div class="error">
+                    {{invalid}}
+                </div>
+            {% endif %}
+            <div class="info">
+                <table class="candidate-list">
+                    <thead>
+                        <tr>
+                            <th>Candidate</th>
+                            <th>Intra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cand in candidate_list %}
+                        <tr>
+                            <th>{{cand.name}}</th>
+                            <th>{{cand.intra}}</th>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="interaction">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="votes">
+                        <div class="input-box">
+                            <div class="details">1. Vote</div>
+                            <input type="text" name="vote1" placeholder="Enter intra name" list="availableCandidates">
+                        </div>
+                        <div class="input-box">
+                            <div class="details">2. Vote</div>
+                            <input type="text" name="vote2" placeholder="Enter intra name" list="availableCandidates">
+                        </div>
+                        <div class="input-box">
+                            <div class="details">3. Vote</div>
+                            <input type="text" name="vote3" placeholder="Enter intra name" list="availableCandidates">
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <input type="submit" value="submit" name="submit">
+                    </div>
+                    <datalist id="availableCandidates">
+						{% for candidate in candidate_list %}
+                        	<option value={{candidate.intra}}>{{candidate.intra}}</option>
+						{% endfor %}
+                    </datalist>
+                </form>
+            </div>
+        </div>
+    </body>
+    </html>

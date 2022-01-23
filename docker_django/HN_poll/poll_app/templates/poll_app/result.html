@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>results</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="result page">
+		<meta name="author" content="Robin Adelwarth">
+	</head>
+
+	<body>
+		<h1>The results after your vote</h1>
+		<p>The candidates:
+			<ul>
+			{% for cand in candidate_list %}
+				<li>
+					{{cand.name}}
+					{{cand.votes}}
+				</li>
+				{% endfor %}
+			</ul>
+		</p>
+	</body>
+</html>
