@@ -12,5 +12,5 @@ make all
 ```
 
 ## The Team
-42 Heilbronn students (https://www.42heilbronn.de/en/):
+[42 Heilbronn](https://www.42heilbronn.de/en/) students:
 [Jeremie](https://github.com/JeremieSiller), [Alex](https://github.com/42akurz), [Kevin](https://github.com/khirsig), [Robin](https://github.com/Radel-24), 
