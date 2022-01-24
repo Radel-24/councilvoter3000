@@ -15,5 +15,7 @@ services:
     build: ./docker_nginx
     ports:
       - 443:443
+    volumes:
+      - ./letsencrypt/:/certificates
     depends_on:
       - web

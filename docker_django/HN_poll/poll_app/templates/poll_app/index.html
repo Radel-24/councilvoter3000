@@ -1,15 +1,105 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>42 council voter 3000</title>
+		<title>Election</title>
 		<meta charset="UTF-8">
-		<meta name="description" content="welcome page">
+		<meta name="description" content="displaying all the candidates of the poll">
 		<meta name="author" content="Robin Adelwarth">
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				font-family: sans-serif;
+			}
+
+			body {
+				display: flex;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+				padding: 10px;
+				background: rgba(5, 183, 183);
+			}
+
+			.container {
+				max-width: 800px;
+				width:	100%;
+				background: white;
+				padding: 25px 30px;
+				border-radius: 10px;
+				border: 2px solid white;
+			}
+
+			.container .title {
+				content: url("https://raw.githubusercontent.com/khirsig/42councilVoter3000/master/logo.png?token=GHSAT0AAAAAABQOBIPZE73DW3SFMM3AIZ2CYPRQUDA");
+				border-radius: 5px;
+				margin-bottom: 40px;
+				order: -1;
+				width: 100%;
+				height: 100%;
+			}
+
+			.container .info {
+				width: 100%;
+				text-align: center;
+				font-size: larger;
+				font-weight: bold;
+				padding-bottom: 20px;
+
+			}
+
+			.btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-left: 250px;
+				padding-right: 250px;
+			}
+
+			.btn a {
+                background-color: rgba(5, 183, 183);
+                padding: 10px;
+                width: 100%;
+                color: white;
+                height: 45px;
+                outline: none;
+                border-radius: 5px;
+                border: 1px solid rgba(5, 183, 183);
+                font-size: 16px;
+                box-shadow: 0 4px #ccc;
+				text-decoration: none;
+            }
+            .btn a:active {
+              background-color: rgba(5, 200, 200);
+              box-shadow: 0 1px #f3f3f3;
+              transform: translateY(4px);
+            }
+            .btn a:hover {
+                background: rgba(5, 200, 200);
+                border: none;
+                cursor: pointer;
+            }
+
+			@media only screen and (max-width: 600px)
+			{
+				.container {
+					max-width: 400px;
+				}
+			}
+		</style>
 	</head>
 
 	<body>
-		<h1>Welcome to 42 council voter 3000</h1>
-		<a class="btn btn-primary" href="https://api.intra.42.fr/oauth/authorize?client_id=35eb229904bb902ce01e52d0936b77b4bfb9802d1a67a5881c0ce947eeb1fa97&redirect_uri=https%3A%2F%2Fcouncil-vote.42heilbronn.de%2Fpoll%2Fvalidation&response_type=code
-		">Intra Verification</a>
+		<div class="container">
+			<div class="info">
+				<div class="title"></div>
+				<div class="welcome">Welcome to 42 council voter 3000</div>
+			</div>
+			<div class="btn">
+				<a class="btn btn-primary" href="https://api.intra.42.fr/oauth/authorize?client_id=35eb229904bb902ce01e52d0936b77b4bfb9802d1a67a5881c0ce947eeb1fa97&redirect_uri=https%3A%2F%2Fcouncil-vote.42heilbronn.de%2Fpoll%2Fvalidation&response_type=code
+				">Intra Verification</a>
+			</div>
+		</div>
 	</body>
 </html>
