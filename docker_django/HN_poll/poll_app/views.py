@@ -1,7 +1,7 @@
 import sqlite3, requests, json
 from pickle import FALSE, TRUE
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout, login, authenticate
 from .models import Candidate
 from requests_oauthlib import OAuth2Session
@@ -126,9 +126,9 @@ def	validation(request):
 		con.close()
 		user = authenticate(username='voter', password=os.environ['VOTER_PWD'])
 		login(request, user)
-	#user_id = "debug"
 	return redirect('poll_app:election', voter=user_id)
 
+@user_passes_test(lambda u: u.is_superuser)
 def	result(request):
 	candidate_list = Candidate.objects.order_by('votes')
 	context = {'candidate_list': candidate_list,}
