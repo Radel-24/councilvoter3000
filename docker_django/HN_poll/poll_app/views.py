@@ -111,9 +111,10 @@ def	validation(request):
 	user = response.json()
 	campus_id = user['campus_users'][0]['campus_id']
 	user_id = user["id"]
+	cursus_id = user['cursus_users'][1]['cursus']['id']
 
 	#check if user  is valid for voting
-	if (campus_id == 39):
+	if (campus_id == 39 and cursus_id == 21):
 		#//check as well for right cursus
 		con = sqlite3.connect('/poll_app/HN_poll/db.sqlite3')
 		cur = con.cursor()
