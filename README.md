@@ -15,3 +15,8 @@ make all
 [42 Heilbronn](https://www.42heilbronn.de/en/) students:
 [Alex](https://github.com/42akurz), [Jeremie](https://github.com/JeremieSiller), [Kevin](https://github.com/khirsig), [Robin](https://github.com/Radel-24) 
 
+## Screenshots
+
+<img src="./img/index.png" width="800">
+<img src="./img/election.png" width="800">
+<img src="./img/end.png" width="800">
