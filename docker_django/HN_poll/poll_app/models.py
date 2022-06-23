@@ -13,3 +13,5 @@ class Voter(models.Model):
 	id_42 = models.CharField(max_length=200)
 
 
+
+

@@ -95,6 +95,7 @@ def election(request, voter):
 	return render(request, 'poll_app/election.html', context)
 
 def	validation(request):
+	print("hello")
 	logout(request)
 	test = get_current_path(request)
 	test2 = json.dumps(test)
@@ -127,6 +128,8 @@ def	validation(request):
 		con.close()
 		user = authenticate(username='voter', password=os.environ['VOTER_PWD'])
 		login(request, user)
+	else:
+		return (redirect('poll_app:end', message="You aren't allowed to vote"))
 	return redirect('poll_app:election', voter=user_id)
 
 @user_passes_test(lambda u: u.is_superuser)
