@@ -1,0 +1,450 @@
+2022-07-17 11:02:41,395:DEBUG:certbot._internal.main:certbot version: 1.29.0
+2022-07-17 11:02:41,395:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/local/bin/certbot
+2022-07-17 11:02:41,395:DEBUG:certbot._internal.main:Arguments: ['--webroot', '-w', '/acme-challenge', '-d', 'council-vote.42heilbronn.de', '-m', 'radelwar@student.42heilbronn.de', '--agree-tos', '--no-eff-email']
+2022-07-17 11:02:41,396:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2022-07-17 11:02:41,417:DEBUG:certbot._internal.log:Root logging level set at 30
+2022-07-17 11:02:41,418:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2022-07-17 11:02:41,422:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * webroot
+Description: Place files in webroot directory
+Interfaces: Authenticator, Plugin
+Entry point: webroot = certbot._internal.plugins.webroot:Authenticator
+Initialized: <certbot._internal.plugins.webroot.Authenticator object at 0x7fbec4eb3910>
+Prep: True
+2022-07-17 11:02:41,422:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot._internal.plugins.webroot.Authenticator object at 0x7fbec4eb3910> and installer None
+2022-07-17 11:02:41,422:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator webroot, Installer None
+2022-07-17 11:02:41,431:DEBUG:certbot._internal.main:Picked account: <Account(RegistrationResource(body=Registration(key=None, contact=(), agreement=None, status=None, terms_of_service_agreed=None, only_return_existing=None, external_account_binding=None), uri='https://acme-v02.api.letsencrypt.org/acme/acct/635097156', new_authzr_uri=None, terms_of_service=None), f166c8e9901ea30a650bc2b8baa82a66, Meta(creation_dt=datetime.datetime(2022, 7, 17, 10, 58, 10, tzinfo=<UTC>), creation_host='bcb3ede194ce', register_to_eff=None))>
+2022-07-17 11:02:41,432:DEBUG:acme.client:Sending GET request to https://acme-v02.api.letsencrypt.org/directory.
+2022-07-17 11:02:41,433:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org:443
+2022-07-17 11:02:41,909:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "GET /directory HTTP/1.1" 200 658
+2022-07-17 11:02:41,910:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 17 Jul 2022 11:02:41 GMT
+Content-Type: application/json
+Content-Length: 658
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "ZiZdsAsBc1o": "https://community.letsencrypt.org/t/adding-random-entries-to-the-directory/33417",
+  "keyChange": "https://acme-v02.api.letsencrypt.org/acme/key-change",
+  "meta": {
+    "caaIdentities": [
+      "letsencrypt.org"
+    ],
+    "termsOfService": "https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf",
+    "website": "https://letsencrypt.org"
+  },
+  "newAccount": "https://acme-v02.api.letsencrypt.org/acme/new-acct",
+  "newNonce": "https://acme-v02.api.letsencrypt.org/acme/new-nonce",
+  "newOrder": "https://acme-v02.api.letsencrypt.org/acme/new-order",
+  "revokeCert": "https://acme-v02.api.letsencrypt.org/acme/revoke-cert"
+}
+2022-07-17 11:02:41,911:DEBUG:certbot._internal.display.obj:Notifying user: Requesting a certificate for council-vote.42heilbronn.de
+2022-07-17 11:02:41,958:DEBUG:certbot.crypto_util:Generating RSA key (2048 bits): /etc/letsencrypt/keys/0003_key-certbot.pem
+2022-07-17 11:02:41,963:DEBUG:certbot.crypto_util:Creating CSR: /etc/letsencrypt/csr/0003_csr-certbot.pem
+2022-07-17 11:02:41,964:DEBUG:acme.client:Requesting fresh nonce
+2022-07-17 11:02:41,964:DEBUG:acme.client:Sending HEAD request to https://acme-v02.api.letsencrypt.org/acme/new-nonce.
+2022-07-17 11:02:42,115:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "HEAD /acme/new-nonce HTTP/1.1" 200 0
+2022-07-17 11:02:42,115:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 17 Jul 2022 11:02:42 GMT
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 0001QwjvpTsNTZPbpBXEs9RnUpdSCPJcbscTMshJVsjwhGk
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+
+2022-07-17 11:02:42,115:DEBUG:acme.client:Storing nonce: 0001QwjvpTsNTZPbpBXEs9RnUpdSCPJcbscTMshJVsjwhGk
+2022-07-17 11:02:42,116:DEBUG:acme.client:JWS payload:
+b'{\n  "identifiers": [\n    {\n      "type": "dns",\n      "value": "council-vote.42heilbronn.de"\n    }\n  ]\n}'
+2022-07-17 11:02:42,118:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/new-order:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvNjM1MDk3MTU2IiwgIm5vbmNlIjogIjAwMDFRd2p2cFRzTlRaUGJwQlhFczlSblVwZFNDUEpjYnNjVE1zaEpWc2p3aEdrIiwgInVybCI6ICJodHRwczovL2FjbWUtdjAyLmFwaS5sZXRzZW5jcnlwdC5vcmcvYWNtZS9uZXctb3JkZXIifQ",
+  "signature": "mC0vZqN51OCOl6UT4t01MBUzKMyJ8wVqFlVNWG7nxr0igChnfH7eH9feYAcPJexBb1u4IR9_shLPaDLh88MXRlpbu1pxMzA-yzElLBdp5siiMbqUJzvTBKpqRA3xLJXNsQNaFEHwQSF1q6hYjuALD1ICwwuNbcWtdSk-ixqYaAXn_Cxfa-fvKToa2x30_eBIcgU6VD-gSg0D5rOBGJhKgl3DtuE5MeESRro8g9h3XDZQiMhs2SYxI-37nmGsAl5nwHSJMDlrX4T8Lhx6RckLrDwax0leuY1EdfP9PNaxJTcHBUuBETSbpjJTPuV_XktIeqbKG_PzHCBfATS3vlk2tg",
+  "payload": "ewogICJpZGVudGlmaWVycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZG5zIiwKICAgICAgInZhbHVlIjogImNvdW5jaWwtdm90ZS40MmhlaWxicm9ubi5kZSIKICAgIH0KICBdCn0"
+}
+2022-07-17 11:02:42,329:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/new-order HTTP/1.1" 201 352
+2022-07-17 11:02:42,330:DEBUG:acme.client:Received response:
+HTTP 201
+Server: nginx
+Date: Sun, 17 Jul 2022 11:02:42 GMT
+Content-Type: application/json
+Content-Length: 352
+Connection: keep-alive
+Boulder-Requester: 635097156
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/635097156/107564137576
+Replay-Nonce: 0002ULpCkRd7D6-QygdJckGUkMEC0HLXX-AUEAE-6zboo_0
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "pending",
+  "expires": "2022-07-24T11:02:42Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "council-vote.42heilbronn.de"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz-v3/131529184656"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/635097156/107564137576"
+}
+2022-07-17 11:02:42,330:DEBUG:acme.client:Storing nonce: 0002ULpCkRd7D6-QygdJckGUkMEC0HLXX-AUEAE-6zboo_0
+2022-07-17 11:02:42,331:DEBUG:acme.client:JWS payload:
+b''
+2022-07-17 11:02:42,332:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/131529184656:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvNjM1MDk3MTU2IiwgIm5vbmNlIjogIjAwMDJVTHBDa1JkN0Q2LVF5Z2RKY2tHVWtNRUMwSExYWC1BVUVBRS02emJvb18wIiwgInVybCI6ICJodHRwczovL2FjbWUtdjAyLmFwaS5sZXRzZW5jcnlwdC5vcmcvYWNtZS9hdXRoei12My8xMzE1MjkxODQ2NTYifQ",
+  "signature": "U4DRvLw0x_BEebLL7FqQA-lOqoePVXjdHB1PfQg6V2_YhncqD9DZzsrRVo2LJO4D05zGlU1VECpkVW3Ms_0egqMBaA9HoDQgsPgYJkIiBxEjm4pHORJZR2t6pmZ8AkNe03bFFaoTXPJuxUXDJZIZcRfbtFXU58r-vctNb_RKtf8BpHo4-yoUgub6pLEVAp3nI5xtVpSHhHMe4JTZQj0hNGwzDw7trdCzCr7208XqeLVY_yPt-O9sp-GumVhgwYakhJ_t6OB407nqZfqo6paH432n3XrgdRHy2RHeGAXSqjFD04nMdtcyq7WGWpmRO5bE2Hjm654ocSrqZCe5St9o8g",
+  "payload": ""
+}
+2022-07-17 11:02:42,489:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/131529184656 HTTP/1.1" 200 811
+2022-07-17 11:02:42,490:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 17 Jul 2022 11:02:42 GMT
+Content-Type: application/json
+Content-Length: 811
+Connection: keep-alive
+Boulder-Requester: 635097156
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 0001GAv9Hw0JRpraC19OdLHuojRxro5u0nnd6nxtNxIfAKc
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "council-vote.42heilbronn.de"
+  },
+  "status": "pending",
+  "expires": "2022-07-24T11:02:42Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/9goYSQ",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    },
+    {
+      "type": "dns-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/zwPgTQ",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    },
+    {
+      "type": "tls-alpn-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/70Fmsg",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    }
+  ]
+}
+2022-07-17 11:02:42,490:DEBUG:acme.client:Storing nonce: 0001GAv9Hw0JRpraC19OdLHuojRxro5u0nnd6nxtNxIfAKc
+2022-07-17 11:02:42,491:INFO:certbot._internal.auth_handler:Performing the following challenges:
+2022-07-17 11:02:42,491:INFO:certbot._internal.auth_handler:http-01 challenge for council-vote.42heilbronn.de
+2022-07-17 11:02:42,491:INFO:certbot._internal.plugins.webroot:Using the webroot path /acme-challenge for all unmatched domains.
+2022-07-17 11:02:42,491:DEBUG:certbot._internal.plugins.webroot:Creating root challenges validation dir at /acme-challenge/.well-known/acme-challenge
+2022-07-17 11:02:42,493:DEBUG:certbot._internal.plugins.webroot:Attempting to save validation to /acme-challenge/.well-known/acme-challenge/jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8
+2022-07-17 11:02:42,493:DEBUG:acme.client:JWS payload:
+b'{}'
+2022-07-17 11:02:42,495:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/9goYSQ:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvNjM1MDk3MTU2IiwgIm5vbmNlIjogIjAwMDFHQXY5SHcwSlJwcmFDMTlPZExIdW9qUnhybzV1MG5uZDZueHROeElmQUtjIiwgInVybCI6ICJodHRwczovL2FjbWUtdjAyLmFwaS5sZXRzZW5jcnlwdC5vcmcvYWNtZS9jaGFsbC12My8xMzE1MjkxODQ2NTYvOWdvWVNRIn0",
+  "signature": "Bzzok47crP1_gTQd2Ahkzvh78_JjLR1j2dYyYCF-2SFTYCtfeM0DfEigK-aIkoiLk92MvZDKXlQZ2J11X5kWQj0p6YEJPDgpznVldQCQtWpuG9DSD_cmV_DAadnoJO4e63wAu_txHN7ScIwW4oeUfkxs3kEe8eh2Zo-2_tjLbteXp71oEwnDZEAzT_dTJBA6dLiloTQvw-h9GnXLi_kZf7hjTU8GC6GPA_afAh-h6av13b3IPogqoAczbLnnSwfqJjSlB5OJW8gl81YnDu936UWZWWwTEg84dQjFc57Jn4CvzWCq9BoB5D2cWSZtzkQ9fglCqf6XrifwixOlju-CfA",
+  "payload": "e30"
+}
+2022-07-17 11:02:42,654:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/chall-v3/131529184656/9goYSQ HTTP/1.1" 200 187
+2022-07-17 11:02:42,655:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 17 Jul 2022 11:02:42 GMT
+Content-Type: application/json
+Content-Length: 187
+Connection: keep-alive
+Boulder-Requester: 635097156
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index", <https://acme-v02.api.letsencrypt.org/acme/authz-v3/131529184656>;rel="up"
+Location: https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/9goYSQ
+Replay-Nonce: 0002ykhU3vaxM1vybInUh30F1rka-_71JO5hOSw_jKqxQpI
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "type": "http-01",
+  "status": "pending",
+  "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/9goYSQ",
+  "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+}
+2022-07-17 11:02:42,655:DEBUG:acme.client:Storing nonce: 0002ykhU3vaxM1vybInUh30F1rka-_71JO5hOSw_jKqxQpI
+2022-07-17 11:02:42,656:INFO:certbot._internal.auth_handler:Waiting for verification...
+2022-07-17 11:02:43,656:DEBUG:acme.client:JWS payload:
+b''
+2022-07-17 11:02:43,658:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/131529184656:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvNjM1MDk3MTU2IiwgIm5vbmNlIjogIjAwMDJ5a2hVM3ZheE0xdnliSW5VaDMwRjFya2EtXzcxSk81aE9Td19qS3F4UXBJIiwgInVybCI6ICJodHRwczovL2FjbWUtdjAyLmFwaS5sZXRzZW5jcnlwdC5vcmcvYWNtZS9hdXRoei12My8xMzE1MjkxODQ2NTYifQ",
+  "signature": "uq16BzOUB6cf8L2XOzK97Y520j8xlgGZDCXASSDSBaouhSV8_I13aF1NaFsU1bqNYVLTFEJB2nl4tDbDodegoNBvkOWogQJ6NOZL6TgTl8cUNQWIwTK3t_ut1R8Bpg3BS5PTkB_DjSjW8D7CD9do3zHzyL8nnySXQrcjhwBV9kUkbnVlOy4F_p0S29Yu3uNfDGX19WlwGW6r48k8rQ0zEzqLXwwUnciIctSLnSyYpLbbFKuiGppT3ZrbsHL1J7-XaTDmnX1fAduJJLOlRU5eyRuEnQfHJxig0hMC62z3DtL9psYifTI-C5WSBTvhrJ2IoqE3p5A4QaWvJe_CtxYkOQ",
+  "payload": ""
+}
+2022-07-17 11:02:43,813:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/131529184656 HTTP/1.1" 200 811
+2022-07-17 11:02:43,814:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 17 Jul 2022 11:02:43 GMT
+Content-Type: application/json
+Content-Length: 811
+Connection: keep-alive
+Boulder-Requester: 635097156
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 00015cZFEHEGTfyTT8KTUWTg7hSR_A6hIsYgXPt0KSp7ebY
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "council-vote.42heilbronn.de"
+  },
+  "status": "pending",
+  "expires": "2022-07-24T11:02:42Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/9goYSQ",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    },
+    {
+      "type": "dns-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/zwPgTQ",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    },
+    {
+      "type": "tls-alpn-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/70Fmsg",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    }
+  ]
+}
+2022-07-17 11:02:43,814:DEBUG:acme.client:Storing nonce: 00015cZFEHEGTfyTT8KTUWTg7hSR_A6hIsYgXPt0KSp7ebY
+2022-07-17 11:02:46,816:DEBUG:acme.client:JWS payload:
+b''
+2022-07-17 11:02:46,819:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/131529184656:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvNjM1MDk3MTU2IiwgIm5vbmNlIjogIjAwMDE1Y1pGRUhFR1RmeVRUOEtUVVdUZzdoU1JfQTZoSXNZZ1hQdDBLU3A3ZWJZIiwgInVybCI6ICJodHRwczovL2FjbWUtdjAyLmFwaS5sZXRzZW5jcnlwdC5vcmcvYWNtZS9hdXRoei12My8xMzE1MjkxODQ2NTYifQ",
+  "signature": "dN0wNQioBcAuNfIDLIJcmPwhtciHVDEiXFZ8f30yuBzjNYVMFot68H_nOuoB2tbrrI66UQRtFDQr7Saw2Hg6q_yD0F5V4hMiKciwnhV_i51DjMF9RZ20Engd8BBRWgA3I8GQz6s-SYZ_IVSHsHHEq9D8Uh-aSbL0VhMxf4eZCrxwAnit7JzhB7X0FoqjQerPsNFPYtxVvIK5aAC8MksfCKdtNmXYxVXyYnMJpC4J9Xay54AFgZtvCehuxqZ0uzNU5nUx2M1dwxKjbLXaVqnwMeKfDbC157c_z2_xGemh2arzOLd-JcXR0OH_nBcXwTjAV9YJLu9PiCBZg7vqN79h1w",
+  "payload": ""
+}
+2022-07-17 11:02:46,973:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/131529184656 HTTP/1.1" 200 811
+2022-07-17 11:02:46,974:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 17 Jul 2022 11:02:46 GMT
+Content-Type: application/json
+Content-Length: 811
+Connection: keep-alive
+Boulder-Requester: 635097156
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 0001CLpv-ZLYZZMg4LaENdvIHobZ92cSuPjJ3lwC42fWSgw
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "council-vote.42heilbronn.de"
+  },
+  "status": "pending",
+  "expires": "2022-07-24T11:02:42Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/9goYSQ",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    },
+    {
+      "type": "dns-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/zwPgTQ",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    },
+    {
+      "type": "tls-alpn-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/70Fmsg",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    }
+  ]
+}
+2022-07-17 11:02:46,974:DEBUG:acme.client:Storing nonce: 0001CLpv-ZLYZZMg4LaENdvIHobZ92cSuPjJ3lwC42fWSgw
+2022-07-17 11:02:49,976:DEBUG:acme.client:JWS payload:
+b''
+2022-07-17 11:02:49,979:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/131529184656:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvNjM1MDk3MTU2IiwgIm5vbmNlIjogIjAwMDFDTHB2LVpMWVpaTWc0TGFFTmR2SUhvYlo5MmNTdVBqSjNsd0M0MmZXU2d3IiwgInVybCI6ICJodHRwczovL2FjbWUtdjAyLmFwaS5sZXRzZW5jcnlwdC5vcmcvYWNtZS9hdXRoei12My8xMzE1MjkxODQ2NTYifQ",
+  "signature": "NPiYI7el0ES9Wk-fWw2mM0oYGM9khfAPjKSzcKRCZiBu0dT_3PaKQUu8bdjo3rRaCfi-9PWnaF0wUDim09F7ijVMKMZWeyU50jHxVhWvgXIjJkPMiz8IWUz7VWgizDYcnXOBxq-5RGILqlQSiHLtuGr_Eg3hep_W7u47HNQhNAmwJ04jnNtJ0CzoBKqWozGCAVVmFq5-SBRgEaVZqghEMTIYx4d6j-4J1FSciODUcjLf0Tw1tW26KPUlPrHNaC5yhjUNs1PfIrZJkOL75uhB_tGKMTqybJJAzwzJ57uMvFWk7iLCBcn2QdZLbNQ5GDbAnfGreHh9C5kyKQcSRUh4Kg",
+  "payload": ""
+}
+2022-07-17 11:02:50,135:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/131529184656 HTTP/1.1" 200 811
+2022-07-17 11:02:50,136:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 17 Jul 2022 11:02:50 GMT
+Content-Type: application/json
+Content-Length: 811
+Connection: keep-alive
+Boulder-Requester: 635097156
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 0001NdPLeyHznFg2qCMOiJqQnRWGL8MgHtSUxytO1aHPG40
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "council-vote.42heilbronn.de"
+  },
+  "status": "pending",
+  "expires": "2022-07-24T11:02:42Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/9goYSQ",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    },
+    {
+      "type": "dns-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/zwPgTQ",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    },
+    {
+      "type": "tls-alpn-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/70Fmsg",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8"
+    }
+  ]
+}
+2022-07-17 11:02:50,136:DEBUG:acme.client:Storing nonce: 0001NdPLeyHznFg2qCMOiJqQnRWGL8MgHtSUxytO1aHPG40
+2022-07-17 11:02:53,140:DEBUG:acme.client:JWS payload:
+b''
+2022-07-17 11:02:53,143:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/131529184656:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvNjM1MDk3MTU2IiwgIm5vbmNlIjogIjAwMDFOZFBMZXlIem5GZzJxQ01PaUpxUW5SV0dMOE1nSHRTVXh5dE8xYUhQRzQwIiwgInVybCI6ICJodHRwczovL2FjbWUtdjAyLmFwaS5sZXRzZW5jcnlwdC5vcmcvYWNtZS9hdXRoei12My8xMzE1MjkxODQ2NTYifQ",
+  "signature": "KlG7hQD-EXp8q3m1z2blDtF5-pSmleV7LDU6EnA21ymH6iaZjYaHjglj8cRuFPchCVA3rWf0q2QJqx1ysyrI3lRrSzDr9GYTPmMZ9U2Qos1YWprlhBlFm18k9znabDBr5Dlp3Y6w-JcwfC2b7EqhhzHilrlyAkFv1_SsBt1WwXaO7Nhb45WJ5T0E31_DKpwLlhtL8Kaar_FBuLG1KWVWDE3jyfgUXqnz9F2Zc0X-sGiMNwCYWxM24NnvXANd538d1UZMzLJoljrF7dhIWj5HN1ddnrLycAC2uHFtdSgeiF3mhmvVx7NQCykjJ4cuapTeAHp0hE5cwfnd0o6-P18Xkg",
+  "payload": ""
+}
+2022-07-17 11:02:53,298:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/131529184656 HTTP/1.1" 200 1112
+2022-07-17 11:02:53,298:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 17 Jul 2022 11:02:53 GMT
+Content-Type: application/json
+Content-Length: 1112
+Connection: keep-alive
+Boulder-Requester: 635097156
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 0001tV-1fP-t5Iru0-sacXZozs3g-1-X0gVFZ1JGPs08Irc
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "council-vote.42heilbronn.de"
+  },
+  "status": "invalid",
+  "expires": "2022-07-24T11:02:42Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "status": "invalid",
+      "error": {
+        "type": "urn:ietf:params:acme:error:connection",
+        "detail": "193.148.165.134: Fetching http://council-vote.42heilbronn.de/.well-known/acme-challenge/jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8: Timeout during connect (likely firewall problem)",
+        "status": 400
+      },
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/131529184656/9goYSQ",
+      "token": "jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8",
+      "validationRecord": [
+        {
+          "url": "http://council-vote.42heilbronn.de/.well-known/acme-challenge/jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8",
+          "hostname": "council-vote.42heilbronn.de",
+          "port": "80",
+          "addressesResolved": [
+            "193.148.165.134"
+          ],
+          "addressUsed": "193.148.165.134"
+        }
+      ],
+      "validated": "2022-07-17T11:02:42Z"
+    }
+  ]
+}
+2022-07-17 11:02:53,299:DEBUG:acme.client:Storing nonce: 0001tV-1fP-t5Iru0-sacXZozs3g-1-X0gVFZ1JGPs08Irc
+2022-07-17 11:02:53,299:INFO:certbot._internal.auth_handler:Challenge failed for domain council-vote.42heilbronn.de
+2022-07-17 11:02:53,299:INFO:certbot._internal.auth_handler:http-01 challenge for council-vote.42heilbronn.de
+2022-07-17 11:02:53,299:DEBUG:certbot._internal.display.obj:Notifying user: 
+Certbot failed to authenticate some domains (authenticator: webroot). The Certificate Authority reported these problems:
+  Domain: council-vote.42heilbronn.de
+  Type:   connection
+  Detail: 193.148.165.134: Fetching http://council-vote.42heilbronn.de/.well-known/acme-challenge/jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8: Timeout during connect (likely firewall problem)
+
+Hint: The Certificate Authority failed to download the temporary challenge files created by Certbot. Ensure that the listed domains serve their content from the provided --webroot-path/-w and that files created there can be downloaded from the internet.
+
+2022-07-17 11:02:53,301:DEBUG:certbot._internal.error_handler:Encountered exception:
+Traceback (most recent call last):
+  File "/opt/certbot/src/certbot/certbot/_internal/auth_handler.py", line 106, in handle_authorizations
+    self._poll_authorizations(authzrs, max_retries, best_effort)
+  File "/opt/certbot/src/certbot/certbot/_internal/auth_handler.py", line 206, in _poll_authorizations
+    raise errors.AuthorizationError('Some challenges have failed.')
+certbot.errors.AuthorizationError: Some challenges have failed.
+
+2022-07-17 11:02:53,301:DEBUG:certbot._internal.error_handler:Calling registered functions
+2022-07-17 11:02:53,301:INFO:certbot._internal.auth_handler:Cleaning up challenges
+2022-07-17 11:02:53,301:DEBUG:certbot._internal.plugins.webroot:Removing /acme-challenge/.well-known/acme-challenge/jpTIC6gc5X1c_Nwxhv3n3qm-o6C1lxFf7Ol1brGR9y8
+2022-07-17 11:02:53,301:DEBUG:certbot._internal.plugins.webroot:All challenges cleaned up
+2022-07-17 11:02:53,302:DEBUG:certbot._internal.log:Exiting abnormally:
+Traceback (most recent call last):
+  File "/usr/local/bin/certbot", line 33, in <module>
+    sys.exit(load_entry_point('certbot', 'console_scripts', 'certbot')())
+  File "/opt/certbot/src/certbot/certbot/main.py", line 19, in main
+    return internal_main.main(cli_args)
+  File "/opt/certbot/src/certbot/certbot/_internal/main.py", line 1744, in main
+    return config.func(config, plugins)
+  File "/opt/certbot/src/certbot/certbot/_internal/main.py", line 1591, in certonly
+    lineage = _get_and_save_cert(le_client, config, domains, certname, lineage)
+  File "/opt/certbot/src/certbot/certbot/_internal/main.py", line 141, in _get_and_save_cert
+    lineage = le_client.obtain_and_enroll_certificate(domains, certname)
+  File "/opt/certbot/src/certbot/certbot/_internal/client.py", line 530, in obtain_and_enroll_certificate
+    cert, chain, key, _ = self.obtain_certificate(domains)
+  File "/opt/certbot/src/certbot/certbot/_internal/client.py", line 442, in obtain_certificate
+    orderr = self._get_order_and_authorizations(csr.data, self.config.allow_subset_of_names)
+  File "/opt/certbot/src/certbot/certbot/_internal/client.py", line 510, in _get_order_and_authorizations
+    authzr = self.auth_handler.handle_authorizations(orderr, self.config, best_effort)
+  File "/opt/certbot/src/certbot/certbot/_internal/auth_handler.py", line 106, in handle_authorizations
+    self._poll_authorizations(authzrs, max_retries, best_effort)
+  File "/opt/certbot/src/certbot/certbot/_internal/auth_handler.py", line 206, in _poll_authorizations
+    raise errors.AuthorizationError('Some challenges have failed.')
+certbot.errors.AuthorizationError: Some challenges have failed.
+2022-07-17 11:02:53,303:ERROR:certbot._internal.log:Some challenges have failed.

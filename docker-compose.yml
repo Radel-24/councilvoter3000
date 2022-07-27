@@ -1,6 +1,15 @@
 version: '3.5'
 
 services:
+  cert:
+    build: ./docker_certbot
+    volumes:
+      - ./docker_certbot/cert_stuff:/acme-challenge
+      - ./docker_certbot/cert_stuff_etc:/etc/letsencrypt
+      - ./docker_certbot/cert_stuff_var:/var/lib/letsencrypt
+      - ./docker_certbot/logs:/var/log/letsencrypt
+    depends_on:
+      - nginx
   web:
     build:
       context: ./docker_django
@@ -15,5 +24,8 @@ services:
     build: ./docker_nginx
     ports:
       - 443:443
+      - 80:80
+    volumes:
+      - ./docker_certbot/cert_stuff:/acme-challenge
     depends_on:
       - web
